@@ -66,53 +66,57 @@ public class kruskal {
         }
 
         int x = 0;
+        int total_weight = 0;
 
         for (Edge e: edgeList) {
             if (x == vertices - 1) break;
             if (find_set(e.source) != find_set(e.destination)) {
                 System.out.println("source: " + e.source + " dest: " + e.destination + " wt: " + e.weight);
+                total_weight += e.weight;
                 union_sets(e.source, e.destination);
                 x++;
             }
         }
+
+        System.out.println("total weight: " + total_weight);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the number of vertices");
+        int vertices = scanner.nextInt();
+
+        System.out.println("Enter the number of edges ");
+        int edges = scanner.nextInt();
+
+        kruskal graph = new kruskal(vertices, edges);
+
+        System.out.println("Enter u, v, w");
+        for (int i = 0; i < edges; i++) {
+            int source = scanner.nextInt();
+            int destination = scanner.nextInt();
+            int weight = scanner.nextInt();
+            graph.edgeList[i] = new Edge(source, destination, weight);
+        }
+
+        graph.kruskalMST();
+        scanner.close();
+
     }
 
     // public static void main(String[] args) {
-
-    //     Scanner scanner = new Scanner(System.in);
-
-    //     System.out.println("Enter the number of vertices");
-    //     int vertices = scanner.nextInt();
-
-    //     System.out.println("Enter the number of edges ");
-    //     int edges = scanner.nextInt();
-
+    //     int vertices = 4;
+    //     int edges = 5;
     //     kruskal graph = new kruskal(vertices, edges);
 
-    //     System.out.println("Enter u, v, w");
-    //     for (int i = 0; i < edges; i++) {
-    //         int source = scanner.nextInt();
-    //         int destination = scanner.nextInt();
-    //         int weight = scanner.nextInt();
-    //         graph.edgeList[i] = new Edge(source, destination, weight);
-    //     }
+    //     graph.edgeList[0] = new Edge(0, 1, 10);
+    //     graph.edgeList[1] = new Edge(0, 2, 6);
+    //     graph.edgeList[2] = new Edge(0, 3, 5);
+    //     graph.edgeList[3] = new Edge(1, 3, 15);
+    //     graph.edgeList[4] = new Edge(2, 3, 4);
 
     //     graph.kruskalMST();
-    //     scanner.close();
-
     // }
-
-    public static void main(String[] args) {
-        int vertices = 4;
-        int edges = 5;
-        kruskal graph = new kruskal(vertices, edges);
-
-        graph.edgeList[0] = new Edge(0, 1, 10);
-        graph.edgeList[1] = new Edge(0, 2, 6);
-        graph.edgeList[2] = new Edge(0, 3, 5);
-        graph.edgeList[3] = new Edge(1, 3, 15);
-        graph.edgeList[4] = new Edge(2, 3, 4);
-
-        graph.kruskalMST();
-    }
 }
