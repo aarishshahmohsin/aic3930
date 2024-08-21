@@ -65,10 +65,14 @@ public class kruskal {
             make_set(v);
         }
 
+        int x = 0;
+
         for (Edge e: edgeList) {
+            if (x == vertices - 1) break;
             if (find_set(e.source) != find_set(e.destination)) {
-                System.out.println(e.source + " " + e.destination + " " + e.weight);
+                System.out.println("source: " + e.source + " dest: " + e.destination + " wt: " + e.weight);
                 union_sets(e.source, e.destination);
+                x++;
             }
         }
     }
