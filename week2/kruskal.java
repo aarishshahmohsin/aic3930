@@ -101,6 +101,7 @@ public class kruskal {
             graph.edgeList[i] = new Edge(source, destination, weight);
         }
 
+
         graph.kruskalMST();
         scanner.close();
 

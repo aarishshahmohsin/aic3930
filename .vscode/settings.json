@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "chrono": "cpp",
+        "queue": "cpp",
+        "iostream": "cpp",
+        "*.tcc": "cpp"
+    }
+}
